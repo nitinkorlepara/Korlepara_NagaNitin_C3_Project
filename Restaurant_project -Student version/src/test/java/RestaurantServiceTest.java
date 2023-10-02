@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.*;
 
 import java.time.LocalTime;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -53,7 +54,13 @@ class RestaurantServiceTest {
 
         assertThrows(restaurantNotFoundException.class,()->service.removeRestaurant("Pantry d'or"));
     }
-
+    @Test
+    public void get_total_order_amount_for_selected_Items() {
+        int totalCost=0;
+        List<Item> selectedItems =null;
+        totalCost =service.getTotalCostForSelectedItems(selectedItems);
+        assertEquals(123,totalCost);
+    }
     @Test
     public void add_restaurant_should_increase_list_of_restaurants_size_by_1(){
 
