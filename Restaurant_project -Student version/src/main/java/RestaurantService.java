@@ -13,7 +13,7 @@ public class RestaurantService {
         }
         throw new restaurantNotFoundException(restaurantName);
     }
-    public int getTotalCostForSelectedItems(List<Item> selectedItems) {
+    public int getTotalCostForSelectedItems(List<String> selectedItems) {
         // TODO Auto-generated method stub
         return 0;
     }
