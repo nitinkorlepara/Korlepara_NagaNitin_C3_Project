@@ -13,9 +13,25 @@ public class RestaurantService {
         }
         throw new restaurantNotFoundException(restaurantName);
     }
-    public int getTotalCostForSelectedItems(List<String> selectedItems,String restaurantName) {
-        // TODO Auto-generated method stub
-        return 0;
+    public int getTotalCostForSelectedItems(List<String> selectedItems,String restaurantName) throws restaurantNotFoundException {
+        Restaurant selectedRestaurant = findRestaurantByName(restaurantName);
+        List<Item> completeMenu = selectedRestaurant.getMenu();
+        int totalCost = 0;
+        for(String selectedItem : selectedItems){
+            Item item = findItemByName(selectedItem,completeMenu);
+            if(item !=null){
+                totalCost+=item.getPrice();
+            }
+        }
+        return totalCost;
+    }
+    private Item findItemByName(String itemName, List<Item> menu) {
+        for (Item item : menu) {
+            if (item.getName().equals(itemName)) {
+                return item;
+            }
+        }
+        return null;
     }
 
     public Restaurant addRestaurant(String name, String location, LocalTime openingTime, LocalTime closingTime) {
