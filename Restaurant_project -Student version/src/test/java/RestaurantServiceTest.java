@@ -58,7 +58,8 @@ class RestaurantServiceTest {
     public void get_total_order_amount_for_selected_Items() {
         int totalCost=0;
         List<String> selectedItems =null;
-        totalCost =service.getTotalCostForSelectedItems(selectedItems);
+        String restaurantName ="";
+        totalCost =service.getTotalCostForSelectedItems(selectedItems,restaurantName);
         assertEquals(123,totalCost);
     }
     @Test
